@@ -9,8 +9,16 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
-
   <body>
-    <%= yield %>
+    <div class="min-h-screen flex flex-col">
+      <%= render 'layouts/header' %>
+      <div class="min-w-full relative mx-auto px-4 flex flex-grow">
+        <div class="content">
+          <%= render 'layouts/alerts' %>
+          <%= yield %>
+        </div>
+      </div>
+      <%= render 'layouts/footer' %>
+    </div>
   </body>
 </html>
