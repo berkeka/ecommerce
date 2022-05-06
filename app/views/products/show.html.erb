@@ -1,5 +1,5 @@
 <% content_for :title, @product.name %>
+<%= link_to 'Compare', product_compare_path(@product), class: 'btn btn-primary' %>
 
 <h2><%= @product.name %></h2>
 <p><%= @product.description %></p>
-

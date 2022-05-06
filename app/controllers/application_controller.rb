@@ -7,6 +7,10 @@ class ApplicationController < ActionController::Base
 
   protected
 
+  def authorize_user
+    redirect_to root_path if current_user.nil? || !current_user.is_admin?
+  end
+
   def fetch_categories
     @categories = Category.includes(:sub_categories).all
   end

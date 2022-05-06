@@ -3,7 +3,10 @@ Rails.application.routes.draw do
   
   devise_for :users
 
-  resources :products
+  resources :products do
+    get 'compare', to: "compare#index"
+    get 'compare/:id', to: "compare#show"
+  end
 
   resources :brands, except: %i[index] do
     get 'products', to: "products#by_brand"

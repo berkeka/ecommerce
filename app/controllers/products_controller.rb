@@ -6,6 +6,8 @@ class ProductsController < ApplicationController
   before_action :set_brand, only: :by_brand
   before_action :set_product, only: %i[show]
 
+  before_action :authorize_user, only: %i[new create update delete]
+
   def index
     @products = Product.all
   end
@@ -33,7 +35,27 @@ class ProductsController < ApplicationController
 
   def show; end
 
+  def new
+    @brands = Brand.all
+    @product = Product.new
+  end
+
+  def create
+    @product = Product.new(product_params)
+    @product.category = @product.sub_category.category
+
+   if @product.save
+    redirect_to @product
+   else
+    render :new
+   end
+  end
+
   private
+
+  def product_params
+    params.require(:product).permit(:name, :description, :sub_category_id, :brand_id)
+  end
 
   def set_product
     @product = Product.find(params[:id])
