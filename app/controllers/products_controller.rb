@@ -43,8 +43,7 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     @product.category = @product.sub_category.category
-    @product.main_image.attach(params[:product][:main_image])
-    @product.images.attach(params[:product][:images])
+    @product.images.attach(params[:product][:main_image]) if params[:product][:main_image]
 
    if @product.save
     render :show, status: :created
@@ -56,7 +55,7 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:name, :description, :sub_category_id, :brand_id)
+    params.require(:product).permit(:name, :description, :price, :sub_category_id, :brand_id, :main_image, :images)
   end
 
   def set_product

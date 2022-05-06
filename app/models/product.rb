@@ -7,4 +7,6 @@ class Product < ApplicationRecord
 
   has_one_attached :main_image, dependent: :destroy
   has_many_attached :images, dependent: :destroy
+
+  validates :price, numericality: { greater_than_or_equal_to: 1.0, less_than_or_equal_to: 9999999.0 }
 end
