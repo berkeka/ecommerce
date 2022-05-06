@@ -17,6 +17,16 @@
         <%= f.select :brand_id, options_from_collection_for_select(@brands, 'id', 'name'), {}, class: 'select select-bordered' %>
     </div>
 
+    <div class="form-control w-full max-w-xs">
+        <%= f.label :main_image, class: 'label label-text' %><br />
+        <%= f.file_field :main_image %>
+    </div>
+
+    <div class="form-control w-full max-w-xs">
+        <%= f.label :images, class: 'label label-text' %><br />
+        <%= f.file_field :images, multiple: true %>
+    </div>
+
     <div class="actions">
         <%= f.submit 'Create', class: 'btn btn-ghost' %>
     </div>
