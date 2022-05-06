@@ -1,0 +1,6 @@
+<% content_for :title, @title %>
+
+<% @products.each do |product| %>
+    <h2><%= product.name %></h2>
+    <p><%= product.description %></p>
+<% end %>
