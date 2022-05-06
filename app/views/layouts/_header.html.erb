@@ -11,7 +11,7 @@
     <ul class="menu menu-horizontal p-0">
       <% @categories.each_with_index do |category, i|%>
         <% if category.sub_categories.empty? %>
-          <li><a><%= category.name %></a></li>
+          <li><%= link_to category.name, category_products_path(category) %></li>
         <% else %>
           <li tabindex="<%= i %>">
             <%= link_to category_products_path(category) do %>
@@ -20,7 +20,7 @@
             <% end %>
             <ul class="p-2">
               <% category.sub_categories.each do |subcategory|%>
-                  <li><a><%= subcategory.name %></a></li>
+                  <li><%= link_to subcategory.name, category_sub_category_products_path(category, subcategory) %></li>
               <% end %>
             </ul>
           </li>
