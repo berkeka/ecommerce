@@ -3,6 +3,10 @@ Rails.application.routes.draw do
   
   devise_for :users
 
+  resources :orders, only: %i[index create]
+  get 'cart', to: "orders#new"
+  get 'my_orders', to: "orders#my_orders"
+
   resources :products do
     get 'compare', to: "compare#index"
     get 'compare/:id', to: "compare#show"

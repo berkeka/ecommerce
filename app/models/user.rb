@@ -6,6 +6,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_many :orders
+
   enum role: %i[user admin]
   after_initialize :set_default_role, if: :new_record?
 

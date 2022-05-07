@@ -1,0 +1,32 @@
+<div class="overflow-x-auto w-full">
+  <table class="table w-full">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Amount</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody id="cart-table-body">
+    </tbody>
+    <tfoot>
+      <tr>
+        <th></th>
+        <th></th>
+        <th>Subtotal:</th>
+        <th id="cart-page-subtotal"></th>
+      </tr>
+    </tfoot>
+  </table>
+  
+  <%= form_with model: @order do |f| %>
+    <%= f.hidden_field :products, multiple: true, id: 'cart-page-products-input' %>
+    <%= f.hidden_field :amounts, multiple: true, id: 'cart-page-amounts-input' %>
+
+    <div class="items-center text-center py-4">
+      <%= f.submit 'Create Order', class: 'btn btn-ghost' %>
+    </div>
+  <% end %>
+</div>
+

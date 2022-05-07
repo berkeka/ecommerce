@@ -6,7 +6,7 @@ class ProductsController < ApplicationController
   before_action :set_brand, only: :by_brand
   before_action :set_product, only: %i[show]
 
-  before_action :authorize_user, only: %i[new create update delete]
+  before_action :authenticate_user!, :authorize_admin, only: %i[new create update delete]
 
   def index
     @products = Product.all

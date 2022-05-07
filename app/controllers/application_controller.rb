@@ -7,8 +7,8 @@ class ApplicationController < ActionController::Base
 
   protected
 
-  def authorize_user
-    redirect_to root_path if current_user.nil? || !current_user.is_admin?
+  def authorize_admin
+    redirect_to root_path unless current_user.is_admin?
   end
 
   def fetch_categories

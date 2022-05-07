@@ -19,8 +19,12 @@
     <h2 class="card-title"><h2><%= @product.name %></h2></h2>
     <p><%= @product.description %></p>
     <p><%= number_to_currency(@product.price, unit: '₺') %></p>
-    <div class="card-actions justify-end">
-      <button class="btn btn-primary">Add to Cart</button>
+    <div data-controller="cart" class="card-actions justify-end">
+      <input type="number" value="1" min="1" name="amount" class="input input-bordered w-1/2 max-w-xs">
+      <input type="hidden" value="<%= @product.id %>">
+      <input type="hidden" value="<%= @product.name %>">
+      <input type="hidden" value="<%= @product.price.to_f %>">
+      <button data-action="click->cart#addToCart" class="btn btn-primary">Add to Cart</button>
     </div>
   </div>
 </div>
