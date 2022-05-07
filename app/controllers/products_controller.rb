@@ -43,7 +43,8 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     @product.category = @product.sub_category.category
-    @product.images.attach(params[:product][:main_image]) if params[:product][:main_image]
+    @product.main_image.attach(params[:product][:main_image]) if params[:product][:main_image]
+    @product.images.attach(params[:product][:images]) if params[:product][:images]
 
     if @product.save
       render :show, status: :created
