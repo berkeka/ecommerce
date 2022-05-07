@@ -31,6 +31,8 @@ export default class extends Controller {
         cartPageProductInputs.value += item.id + ",";
         cartPageAmountInputs.value += item.amount + ",";
       });
+
+      //this.gaViewCartPage(cart["items"]);
     }
   }
 
@@ -52,6 +54,8 @@ export default class extends Controller {
     
     const cartItem = this.CartItem(productId, name, amountInput, price);
     const cart = this.addToCartObject(cartItem);
+    
+    //this.gaAddToCart(cartItem);
     this.saveCart(cart);
   }
 
@@ -174,5 +178,37 @@ export default class extends Controller {
     const div = document.createElement("div");
     div.className = "font-bold";
     div.innerHTML = name;
+  }
+
+  gaAddToCart(item) {
+    gtag("event", "add_to_cart", {
+      currency: "TRY",
+      items: [
+        {
+          item_id: item.id,
+          item_name: item.name,
+          price: item.price,
+          quantity: item.amount
+        }
+      ]
+    });
+  }
+
+  gaViewCartPage(items){
+    let gaItems = [];
+
+    items.forEach(item => {
+      gaItems.push({
+        "item_id":item.id,
+        "item_name":item.name,
+        "price":item.price,
+        "quantity":item.amount
+      });
+    });
+
+    gtag("event", "view_cart", {
+      currency: "TRY",
+      items: gaItems
+    });
   }
 }
