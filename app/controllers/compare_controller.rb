@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CompareController < ApplicationController
   before_action :set_first_product
   before_action :set_second_product, only: :show

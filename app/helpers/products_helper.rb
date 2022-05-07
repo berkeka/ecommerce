@@ -3,12 +3,11 @@
 module ProductsHelper
   module_function
 
-  def select_category_list categories
-    categories.each.inject({}) do |hash, category|
-      hash[category.name] = category.sub_categories.each.inject([]) do |arr, subcategory|
+  def select_category_list(categories)
+    categories.each.each_with_object({}) do |category, hash|
+      hash[category.name] = category.sub_categories.each.reduce([]) do |arr, subcategory|
         arr << [subcategory.name, subcategory.id]
       end
-      hash
     end
   end
 end

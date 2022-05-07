@@ -8,11 +8,11 @@ class User < ApplicationRecord
 
   has_many :orders
 
-  enum role: %i[user admin]
+  enum role: { user: 0, admin: 1 }
   after_initialize :set_default_role, if: :new_record?
 
-  def is_admin?
-    self.role == 'admin'
+  def admin?
+    role == 'admin'
   end
 
   def set_default_role

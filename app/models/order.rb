@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Order < ApplicationRecord
   has_many :order_products, dependent: :destroy
 
@@ -6,6 +8,6 @@ class Order < ApplicationRecord
   private
 
   def calculate_total
-    self.total ||= 0 #self.product_orders
+    self.total ||= 0 # self.product_orders
   end
 end

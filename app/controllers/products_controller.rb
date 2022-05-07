@@ -45,11 +45,11 @@ class ProductsController < ApplicationController
     @product.category = @product.sub_category.category
     @product.images.attach(params[:product][:main_image]) if params[:product][:main_image]
 
-   if @product.save
-    render :show, status: :created
-   else
-    render :new
-   end
+    if @product.save
+      render :show, status: :created
+    else
+      render :new
+    end
   end
 
   private

@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 class OrdersController < ApplicationController
   before_action :authenticate_user!
   before_action :authorize_admin, only: :index
   before_action :set_products, :set_amounts, only: :create
-  
+
   def my_orders
     @orders = current_user.orders
   end
@@ -10,7 +12,7 @@ class OrdersController < ApplicationController
   def new
     @order = Order.new
   end
-  
+
   def create
     @order = current_user.orders.new
 
@@ -33,5 +35,4 @@ class OrdersController < ApplicationController
   def set_amounts
     @amounts = params[:order][:amounts].first.split(',').map(&:to_i)
   end
-
 end
