@@ -1,0 +1,45 @@
+<% content_for :title, "#{@first_product.name} Comparison #{@second_product.name}" %>
+
+<div class="flex flex-col w-full lg:flex-row gap-8">
+    <div class="card w-96 bg-base-100 shadow-xl py-3">
+        <figure>
+            <% if @first_product.images.attached? %>
+            <div class="w-64 carousel rounded-box">
+                <% @first_product.images.each_with_index do |image, index|%>
+                <div class="carousel-item w-full">
+                    <%= image_tag image , class: 'object-scale-down h-36 w-50', class: 'w-full', alt: "first_product-image-#{index}" %>
+                </div> 
+                <% end %>
+            </div>
+            <% else %>
+                <img class="max-h-20" src="https://dummyimage.com/640x360/fff/aaa" alt="placeholder">
+            <% end %>
+        </figure>
+        <div class="card-body">
+            <h2 class="card-title"><h2><%= @first_product.name %></h2></h2>
+            <p><%= @first_product.description %></p>
+            <p><%= number_to_currency(@first_product.price, unit: '₺') %></p>
+        </div>
+    </div>
+  <div class="divider lg:divider-horizontal">COMPARE</div> 
+    <div class="card w-96 bg-base-100 shadow-xl py-3">
+        <figure>
+            <% if @second_product.images.attached? %>
+            <div class="w-64 carousel rounded-box">
+                <% @second_product.images.each_with_index do |image, index|%>
+                <div class="carousel-item w-full">
+                    <%= image_tag image , class: 'object-scale-down h-36 w-50', class: 'w-full', alt: "first_product-image-#{index}" %>
+                </div> 
+                <% end %>
+            </div>
+            <% else %>
+                <img class="max-h-20" src="https://dummyimage.com/640x360/fff/aaa" alt="placeholder">
+            <% end %>
+        </figure>
+        <div class="card-body">
+            <h2 class="card-title"><h2><%= @second_product.name %></h2></h2>
+            <p><%= @second_product.description %></p>
+            <p><%= number_to_currency(@second_product.price, unit: '₺') %></p>
+        </div>
+    </div>
+</div>
