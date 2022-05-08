@@ -6,7 +6,12 @@ class OrdersController < ApplicationController
   before_action :set_products, :set_amounts, only: :create
 
   def index
-    @orders = Order.all
+    @orders = Order.includes(:order_products).all
+
+    respond_to do |format|
+      format.html
+      format.json { render json: @orders }
+    end
   end
 
   def my_orders
@@ -21,11 +26,12 @@ class OrdersController < ApplicationController
     @order = current_user.orders.new
 
     @product_ids.zip(@amounts).each do |id, amount|
-      @order.order_products.new(product_id: id, amount: amount)
+      product = Product.find(id)
+      @order.order_products.new(product_id: id, amount: amount, price: product.price)
     end
 
     if @order.save
-      render :new, status: :created
+      redirect_to my_orders_path, status: :created
     else
       flash[:alert] = @order.errors
       render :new

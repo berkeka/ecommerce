@@ -5,9 +5,7 @@ class Order < ApplicationRecord
 
   before_save :calculate_total
 
-  private
-
   def calculate_total
-    self.total ||= 0 # self.product_orders
+    self.total ||= self.order_products.each.inject(0.0) {|sum, p| sum += p.subtotal}
   end
 end
