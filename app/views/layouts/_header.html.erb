@@ -3,7 +3,7 @@
     <%= link_to "Ecommerce", root_path, class: "btn btn-ghost normal-case text-xl" %>
   </div>
   <div class="navbar-center hidden lg:flex">
-    <ul class="menu menu-horizontal p-0">
+    <ul class="menu menu-horizontal p-0 hover:z-10">
       <% @categories.each_with_index do |category, i|%>
         <% if category.sub_categories.empty? %>
           <li><%= link_to category.name, category_products_path(category) %></li>
