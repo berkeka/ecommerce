@@ -5,6 +5,10 @@ class OrdersController < ApplicationController
   before_action :authorize_admin, only: :index
   before_action :set_products, :set_amounts, only: :create
 
+  def index
+    @orders = Order.all
+  end
+
   def my_orders
     @orders = current_user.orders
   end
