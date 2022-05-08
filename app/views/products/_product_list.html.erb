@@ -1,0 +1,22 @@
+<div class="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-5">
+    <% @products.each do |product| %>
+        <div class="card card-bordered w-96 bg-base-100 shadow-xl my-4">
+            <%= link_to product do %>
+                <div class="items-center text-center">
+                    <figure class="px-10 pt-10 h-30">
+                        <% if product.main_image.attached? %>
+                            <%= image_tag product.main_image , class: 'object-scale-down h-36 w-50'%>
+                        <% else %>
+                            <img class="max-h-20" src="https://dummyimage.com/640x360/fff/aaa" alt="placeholder">
+                        <% end %>
+                    </figure>
+                </div>
+            <% end %>
+            <div class="card-body items-center text-center">
+                <h2 class="card-title"><%= product.name %></h2>
+                <p><%= product.description %></p>
+                <p><%= number_to_currency(product.price, unit: '₺') %></p>
+            </div>
+        </div>
+    <% end %>
+</div>

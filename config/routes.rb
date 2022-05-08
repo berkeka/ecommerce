@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :orders, only: %i[index create]
   get 'cart', to: "orders#new"
   get 'my_orders', to: "orders#my_orders"
+  get 'search', to: "search#results", as: 'search'
 
   resources :products do
     get 'compare', to: "compare#index"
