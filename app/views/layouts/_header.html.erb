@@ -37,6 +37,7 @@
           <span id="dropdown-subtotal" class="text-info">Subtotal: $999</span>
           <div class="card-actions">
             <%= link_to 'View cart', cart_path, class: 'btn btn-primary btn-block' %>
+            <button data-action="click->cart#clearCart" class="btn btn-sm btn-error mx-8">Clear cart</button>
           </div>
         </div>
       </div>
