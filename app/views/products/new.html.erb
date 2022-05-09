@@ -1,3 +1,5 @@
+<% content_for :title, 'New Product' %>
+
 <%= form_with model: @product do |f| %>
     <div class="form-control w-full max-w-xs">
         <%= f.label :name, class: 'label label-text' %><br />
@@ -31,7 +33,26 @@
         <%= f.file_field :images, multiple: true %>
     </div>
 
+    <div class="form-control w-full max-w-xs">
+        <%= f.label 'Tags', class: 'label label-text' %><br />
+        <%= f.text_field :tag_list, class: 'input input-bordered inline-flex gap-2 invisible' %>
+    </div>
+
     <div class="actions">
         <%= f.submit 'Create', class: 'btn btn-ghost' %>
     </div>
 <% end %>
+
+<script>
+    window.addEventListener('load', (event) => {
+        var input = document.querySelector('#product_tag_list');
+        tagify = new Tagify(input, {})
+        document.querySelector('.tagify').classList.remove('invisible');
+    });
+</script>
+
+<style>
+    .tagify {
+        flex-wrap: nowrap;
+    }
+</style>

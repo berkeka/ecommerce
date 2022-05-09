@@ -1,4 +1,7 @@
 <% content_for :title, @product.name %>
+<% content_for :description, @product.description %>
+<% content_for :meta_tags, @meta_tags %>
+
 <%= link_to 'Compare', product_compare_path(@product), class: 'btn btn-primary' %>
 
 <div class="card w-96 bg-base-100 shadow-xl py-3">

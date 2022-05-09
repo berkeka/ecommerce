@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :multi_discounts
+  resources :tags
 
   resources :orders, only: %i[index create]
   get 'cart', to: "orders#new"

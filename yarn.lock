@@ -46,6 +46,11 @@
   resolved "https://registry.yarnpkg.com/@rails/actioncable/-/actioncable-7.0.2.tgz#69a6d999f4087e0537dd38fe0963db1f4305d650"
   integrity sha512-G26maXW1Kx0LxQdmNNuNjQlRO/QlXNr3QfuwKiOKb5FZQGYe2OwtHTGXBAjSoiu4dW36XYMT/+L1Wo1Yov4ZXA==
 
+"@yaireo/tagify@3.1.0":
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/@yaireo/tagify/-/tagify-3.1.0.tgz#c7b55ff88ef016aade9edf5a064a27089e62462f"
+  integrity sha512-zK5AHL+8fXZAg0W90iBX/lPa2Af5YmNZcbF7RE6do/Aql2UWPBWujocFO8BvUcYrG67/4M8wGDaSRbiR3iBSAw==
+
 acorn-node@^1.6.1:
   version "1.8.2"
   resolved "https://registry.yarnpkg.com/acorn-node/-/acorn-node-1.8.2.tgz#114c95d64539e53dede23de8b9d96df7c7ae2af8"

@@ -7,6 +7,8 @@ class Product < ApplicationRecord
 
   has_many :multi_discount_products
   has_many :multi_discounts, through: :multi_discount_products
+  has_many :product_tags
+  has_many :tags, through: :product_tags
   
   has_many :order_products
 
