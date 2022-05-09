@@ -32,7 +32,7 @@ export default class extends Controller {
         cartPageAmountInputs.value += item.amount + ",";
       });
 
-      //this.gaViewCartPage(cart["items"]);
+      this.gaViewCartPage(cart["items"]);
     }
   }
 
@@ -55,7 +55,7 @@ export default class extends Controller {
     const cartItem = this.CartItem(productId, name, amountInput, price);
     const cart = this.addToCartObject(cartItem);
     
-    //this.gaAddToCart(cartItem);
+    this.gaAddToCart(cartItem);
     this.saveCart(cart);
   }
 
