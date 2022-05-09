@@ -6,7 +6,7 @@ class OrdersController < ApplicationController
   before_action :set_products, :set_amounts, only: :create
 
   def index
-    @orders = Order.includes(:order_products).all
+    @orders = Order.includes(:order_products, :products).all
 
     respond_to do |format|
       format.html
@@ -15,7 +15,7 @@ class OrdersController < ApplicationController
   end
 
   def my_orders
-    @orders = current_user.orders
+    @orders = Order.includes(:products).where(user_id: current_user.id)
   end
 
   def new

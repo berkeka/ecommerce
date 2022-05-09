@@ -1,0 +1,15 @@
+<% @orders.each do |order| %>
+    <div tabindex="0" class="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box">
+        <div class="collapse-title text-xl font-medium mx-10">
+            Order id: <%= order.id %> - <%= order.created_at %>
+        </div>
+        <div class="collapse-content mx-10"> 
+            <ul>
+            <% order.order_products.each do |o_product| %>
+                <li><%= o_product.product.name %> - <%= o_product.product.price %> x <%= o_product.amount %></li>
+            <% end %>
+            </ul>
+            <p>Total: <%= order.total %></p>
+        </div>
+    </div>
+<% end %>
