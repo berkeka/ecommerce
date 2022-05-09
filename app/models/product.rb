@@ -4,6 +4,10 @@ class Product < ApplicationRecord
   belongs_to :category
   belongs_to :sub_category
   belongs_to :brand
+
+  has_many :multi_discount_products
+  has_many :multi_discounts, through: :multi_discount_products
+  
   has_many :order_products
 
   has_one_attached :main_image, dependent: :destroy

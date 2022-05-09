@@ -1,0 +1,2 @@
+module MultiDiscountsHelper
+end

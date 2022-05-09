@@ -1,0 +1,30 @@
+<%= form_with(model: multi_discount) do |form| %>
+  <% if multi_discount.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(multi_discount.errors.count, "error") %> prohibited this multi_discount from being saved:</h2>
+
+      <ul>
+        <% multi_discount.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :products, style: "display: block" %>
+    <% @products.each do |product| %>
+      <%= product.name %>
+      <%= form.check_box :product_ids, {multiple: true}, product.id, nil %> <br>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :discount_amount, style: "display: block" %>
+    <%= form.number_field :discount_amount %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

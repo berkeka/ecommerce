@@ -33,7 +33,11 @@ class ProductsController < ApplicationController
     render :index
   end
 
-  def show; end
+  def show
+    @discount = @product.multi_discounts.sample
+    discount_product_ids = @discount.multi_discount_products.pluck(:product_id)
+    @discount_products = Product.where(id: discount_product_ids)
+  end
 
   def new
     @brands = Brand.all
@@ -60,7 +64,7 @@ class ProductsController < ApplicationController
   end
 
   def set_product
-    @product = Product.find(params[:id])
+    @product = Product.includes(:multi_discounts).find(params[:id])
   end
 
   def set_category

@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Multi discounts</h1>
+
+<div id="multi_discounts">
+  <% @multi_discounts.each do |multi_discount| %>
+    <%= render multi_discount %>
+    <p>
+      <%= link_to "Show this multi discount", multi_discount %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New multi discount", new_multi_discount_path %>

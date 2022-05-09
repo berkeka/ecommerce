@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @multi_discount %>
+
+<div>
+  <%= link_to "Edit this multi discount", edit_multi_discount_path(@multi_discount) %> |
+  <%= link_to "Back to multi discounts", multi_discounts_path %>
+
+  <%= button_to "Destroy this multi discount", @multi_discount, method: :delete %>
+</div>

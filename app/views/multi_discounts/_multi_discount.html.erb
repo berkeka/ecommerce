@@ -1,0 +1,13 @@
+<div id="<%= dom_id multi_discount %>">
+  <p>
+    <strong>Discount amount:</strong>
+    <%= multi_discount.discount_amount %>
+  </p>
+
+  <ul>
+    <% multi_discount.products.each do |product| %>
+      <li><%= product.name %></li>
+    <% end %>
+  </ul>
+
+</div>

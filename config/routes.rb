@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   
   devise_for :users
 
+  resources :multi_discounts
+
   resources :orders, only: %i[index create]
   get 'cart', to: "orders#new"
   get 'my_orders', to: "orders#my_orders"
