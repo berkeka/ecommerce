@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :tags
   resources :offers, only: %i[new create]
   resources :orders, only: %i[index create]
+  resources :bulk, only: %i[new create]
   
   get 'cart', to: "orders#new"
   get 'my_orders', to: "orders#my_orders"

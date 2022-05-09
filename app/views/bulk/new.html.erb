@@ -1,0 +1,12 @@
+<% content_for :title, 'Bulk Action' %>
+
+<%= form_with url: "/bulk", multipart: true do |f| %>
+        <div class="form-control w-full max-w-xs my-5">
+            <%= f.label :json_file, class: 'label label-text' %><br />
+            <%= f.file_field :json_file %>
+        </div>
+
+        <div class="actions my-5 mx-20">
+            <%= f.submit 'Bulk Create', class: 'btn btn-ghost' %>
+        </div>
+<% end %>

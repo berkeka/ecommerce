@@ -59,8 +59,6 @@ class ProductsController < ApplicationController
       tags << Tag.find_or_initialize_by(content: tag)
     end
 
-    p tags
-
     @product.tags = tags
 
     if @product.save
