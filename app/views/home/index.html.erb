@@ -1,5 +1,24 @@
 <% content_for :title, 'Ecommerce' %>
 
+<div class="carousel w-full">
+    <% if @offers %>
+        <% @offers.each_with_index do |offer, i| %>
+            <%= link_to brand_products_path(offer.brand) do %>
+                <div id="item<%= i %>" class="carousel-item w-full">
+                    <%= image_tag offer.image , class: 'object-contain h-90 w-96'%>
+                </div>
+            <% end %>
+        <% end %>       
+    <% end %>
+</div> 
+<div class="flex justify-center w-full py-2 gap-2">
+    <% if @offers %>
+        <% (1..@offers.count).each do |i|%>
+            <a href="#item<%= i %>" class="btn btn-xs"><%= i %></a>
+        <% end %>
+    <% end %>
+</div>
+
 <div class="my-5 flex justify-center">
     <%= form_with url: "/search", method: :get do |f| %>
         <div class="input-group">

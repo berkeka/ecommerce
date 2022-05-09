@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_09_024302) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_09_053628) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -42,6 +42,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_09_024302) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "brand_offers", force: :cascade do |t|
+    t.bigint "brand_id", null: false
+    t.bigint "offer_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["brand_id"], name: "index_brand_offers_on_brand_id"
+    t.index ["offer_id"], name: "index_brand_offers_on_offer_id"
+  end
+
   create_table "brands", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -65,6 +74,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_09_024302) do
 
   create_table "multi_discounts", force: :cascade do |t|
     t.integer "discount_amount"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "offers", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -149,6 +164,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_09_024302) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "brand_offers", "brands"
+  add_foreign_key "brand_offers", "offers"
   add_foreign_key "multi_discount_products", "multi_discounts"
   add_foreign_key "multi_discount_products", "products"
   add_foreign_key "order_products", "orders"
