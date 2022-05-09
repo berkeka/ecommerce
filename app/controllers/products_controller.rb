@@ -36,8 +36,10 @@ class ProductsController < ApplicationController
 
   def show
     @discount = @product.multi_discounts.sample
-    discount_product_ids = @discount.multi_discount_products.pluck(:product_id)
-    @discount_products = Product.where(id: discount_product_ids)
+    if @discount
+      discount_product_ids = @discount.multi_discount_products.pluck(:product_id)
+      @discount_products = Product.where(id: discount_product_ids)
+    end
     @meta_tags = join_meta_tags(@product.tags)
   end
 
